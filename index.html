@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RUULEMAX | Financial Information Consulting Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        :root {
+            --main-dark: #363636;
+            --main-light: #F6F6F6;
+            --bg-data1: #EAE2D8;
+            --bg-data2: #EADFEA;
+            --highlight1: #96D8B9;
+            --highlight2: #FF9635;
+            --tag1: #FFC996;
+            --tag2: #FFC136;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --transition: all 0.3s ease;
+        }
+        body {
+            background-color: var(--main-light);
+            color: var(--main-dark);
+            overflow-x: hidden;
+            line-height: 1.65;
+        }
+        /* Header & Navbar */
+        header {
+            background-color: var(--main-dark);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 999;
+            box-shadow: var(--shadow-md);
+        }
+        .nav-container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        .logo-text {
+            color: #fff;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            display: flex;
+            align-items: center;
+        }
+        .logo-text span {
+            color: var(--highlight2);
+            margin-left: 8px;
+            font-size: 20px;
+        }
+        .desktop-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+        .desktop-nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            transition: var(--transition);
+            position: relative;
+            padding: 8px 0;
+        }
+        .desktop-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--highlight2);
+            transition: var(--transition);
+        }
+        .desktop-nav a:hover {
+            color: var(--highlight2);
+        }
+        .desktop-nav a:hover::after {
+            width: 100%;
+        }
+        .mobile-menu-btn {
+            display: none;
+            color: #fff;
+            font-size: 30px;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .mobile-nav {
+            position: absolute;
+            top:72px;
+            left:0;
+            width:100%;
+            background: var(--main-dark);
+            max-height:0;
+            overflow:hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+        }
+        .mobile-nav.active {
+            max-height: 400px;
+        }
+        .mobile-nav ul {
+            list-style: none;
+            padding:24px 20px;
+        }
+        .mobile-nav li {
+            padding:14px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .mobile-nav a {
+            color:#fff;
+            text-decoration:none;
+            font-size:16px;
+            display: block;
+            transition: var(--transition);
+        }
+        .mobile-nav a:hover {
+            color: var(--highlight2);
+            padding-left: 8px;
+        }
+        /* Main Section Padding for fixed header */
+        main {
+            margin-top:72px;
+        }
+        section {
+            padding: 90px 20px;
+            max-width:1320px;
+            margin:0 auto;
+        }
+        /* Section Headings */
+        .section-header {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        .section-subtitle {
+            color:var(--highlight2);
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+        .section-title {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: var(--main-dark);
+            line-height: 1.3;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--highlight1);
+            border-radius: 3px;
+        }
+        .section-desc {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 17px;
+            color: #666;
+        }
+        /* Hero Banner */
+        .hero {
+            width:100%;
+            height:90vh;
+            background: linear-gradient(rgba(54,54,54,0.8),rgba(54,54,54,0.8)), url('https://anasoldi85-lgtm.github.io/1-5/18.jpg') center/cover no-repeat;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            color:#fff;
+            text-align:center;
+            padding: 0 20px;
+        }
+        .hero h1 {
+            font-size: 58px;
+            margin-bottom:24px;
+            line-height: 1.2;
+        }
+        .hero h1 span {
+            color: var(--highlight2);
+        }
+        .hero p {
+            font-size:20px;
+            max-width:750px;
+            line-height:1.7;
+            margin-bottom:40px;
+            opacity: 0.95;
+        }
+        .hero-btn {
+            padding:16px 36px;
+            background:var(--highlight2);
+            color:var(--main-dark);
+            text-decoration:none;
+            border-radius:var(--radius-md);
+            font-weight:600;
+            transition:var(--transition);
+            font-size: 17px;
+            box-shadow: var(--shadow-md);
+        }
+        .hero-btn:hover {
+            background:var(--highlight1);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        /* About Us Section */
+        .about-wrap {
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:60px;
+            align-items:center;
+        }
+        .about-img-box {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        .about-img-box img {
+            width:100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .about-img-box:hover img {
+            transform: scale(1.03);
+        }
+        .about-desc {
+            padding: 10px 0;
+        }
+        .about-desc .section-subtitle {
+            text-align: left;
+            display: block;
+        }
+        .about-desc .section-title {
+            text-align: left;
+            margin-left: 0;
+        }
+        .about-desc .section-title::after {
+            left: 0;
+            transform: none;
+        }
+        .about-desc p {
+            line-height: 1.8;
+            font-size: 17px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 30px;
+        }
+        .about-feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .about-feature-icon {
+            color: var(--highlight2);
+            font-size: 20px;
+            margin-top: 4px;
+        }
+        .about-feature-text h4 {
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+        .about-feature-text p {
+            font-size: 14px;
+            margin-bottom: 0;
+            color: #777;
+        }
+        /* Service Section */
+        .service-section {
+            background:var(--bg-data1);
+            margin:0 -20px;
+            padding:90px 20px;
+        }
+        .service-grid {
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:36px;
+        }
+        .service-card {
+            background:var(--main-light);
+            padding:40px 32px;
+            border-radius:var(--radius-lg);
+            border-top:5px solid var(--highlight1);
+            box-shadow:var(--shadow-sm);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+            border-top-color: var(--highlight2);
+        }
+        .service-card-icon {
+            font-size: 36px;
+            color: var(--highlight2);
+            margin-bottom: 20px;
+        }
+        .service-card h3 {
+            margin: 0 0 18px;
+            font-size: 22px;
+            color: var(--main-dark);
+        }
+        .service-card-desc {
+            line-height: 1.8;
+            font-size: 16px;
+            color: #666;
+            flex: 1;
+            margin-bottom: 20px;
+        }
+        .service-card-details {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 16px;
+            padding-left: 12px;
+            border-left: 2px solid var(--tag1);
+        }
+        .service-tag {
+            display:inline-block;
+            padding:6px 14px;
+            background:var(--tag1);
+            border-radius:var(--radius-sm);
+            font-size:13px;
+            font-weight: 500;
+            margin-top: auto;
+            align-self: flex-start;
+        }
+        /* Data & Stats Section */
+        .stats-section {
+            background:var(--bg-data2);
+            margin:0 -20px;
+            padding:90px 20px;
+        }
+        .stats-grid {
+            display:grid;
+            grid-template-columns:repeat(4,1fr);
+            gap:32px;
+            text-align:center;
+        }
+        .stat-item {
+            background: #fff;
+            padding: 40px 20px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        .stat-item:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-md);
+        }
+        .stat-item .num {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--highlight2);
+            margin-bottom: 12px;
+            line-height: 1;
+        }
+        .stat-item .label {
+            background:var(--tag2);
+            display:inline-block;
+            padding:8px 18px;
+            border-radius:var(--radius-sm);
+            font-size:15px;
+            font-weight: 500;
+            color: var(--main-dark);
+        }
+        .stat-item .stat-desc {
+            margin-top: 16px;
+            font-size: 14px;
+            color: #777;
+        }
+        /* Company Team Section */
+        .team-grid {
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:40px;
+            margin-top:60px;
+        }
+        .team-card {
+            background:#fff;
+            border-radius:var(--radius-lg);
+            overflow:hidden;
+            box-shadow:var(--shadow-sm);
+            transition: var(--transition);
+        }
+        .team-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-6px);
+        }
+        .team-img {
+            height:280px;
+            background:url('https://anasoldi85-lgtm.github.io/1-5/19.jpg') center/cover no-repeat;
+            position: relative;
+        }
+        .team-social {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            padding: 16px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .team-card:hover .team-social {
+            opacity: 1;
+        }
+        .team-social a {
+            color: #fff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        .team-social a:hover {
+            background: var(--highlight2);
+            transform: translateY(-4px);
+        }
+        .team-info {
+            padding:28px;
+        }
+        .team-info h4 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+        .team-info .team-position {
+            color:var(--highlight2);
+            font-size:15px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .team-bio {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.7;
+        }
+        /* Contact Page Section */
+        .contact-wrap {
+            display:grid;
+            grid-template-columns:1fr 1.2fr;
+            gap:60px;
+        }
+        .contact-info-block h3 {
+            font-size: 26px;
+            margin-bottom: 28px;
+            color: var(--main-dark);
+        }
+        .contact-item {
+            margin-bottom: 28px;
+            padding: 16px;
+            background: #fff;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+        .contact-item strong {
+            color:var(--highlight1);
+            display:block;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .contact-item p {
+            font-size: 15px;
+            color: #555;
+        }
+        .contact-map {
+            margin-top: 30px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        .contact-form {
+            background:#fff;
+            padding:40px;
+            border-radius:var(--radius-lg);
+            box-shadow:var(--shadow-md);
+        }
+        .form-row {
+            margin-bottom:24px;
+        }
+        .form-row label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #555;
+        }
+        .form-row input, .form-row textarea {
+            width:100%;
+            padding:14px 18px;
+            border:1px solid #e0e0e0;
+            border-radius:var(--radius-sm);
+            font-size:15px;
+            transition: var(--transition);
+        }
+        .form-row input:focus, .form-row textarea:focus {
+            outline: none;
+            border-color: var(--highlight2);
+            box-shadow: 0 0 0 3px rgba(255,150,53,0.1);
+        }
+        .form-row textarea {
+            min-height:150px;
+            resize:vertical;
+            line-height: 1.6;
+        }
+        .submit-btn {
+            width:100%;
+            padding:16px;
+            background:var(--highlight2);
+            border:none;
+            border-radius:var(--radius-sm);
+            font-weight:600;
+            font-size:17px;
+            cursor:pointer;
+            transition:var(--transition);
+            color: var(--main-dark);
+        }
+        .submit-btn:hover {
+            background:var(--highlight1);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+        .success-alert {
+            display:none;
+            margin-top:20px;
+            padding:16px;
+            background:var(--highlight1);
+            text-align:center;
+            border-radius:var(--radius-sm);
+            font-weight:500;
+            color: var(--main-dark);
+            animation: fadeInUp 0.5s ease;
+        }
+        /* Footer */
+        footer {
+            background:var(--main-dark);
+            color:#fff;
+            padding:80px 20px 40px;
+            margin-top: 40px;
+        }
+        .footer-container {
+            max-width:1320px;
+            margin:0 auto;
+            display:grid;
+            grid-template-columns:2fr 1fr 1fr 1.2fr;
+            gap:40px;
+        }
+        .footer-col h4 {
+            font-size: 20px;
+            margin-bottom: 28px;
+            color: var(--highlight2);
+            position: relative;
+            padding-bottom: 12px;
+        }
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--highlight1);
+        }
+        .footer-col p {
+            color:#ccc;
+            line-height:1.8;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+        .footer-col ul {
+            list-style:none;
+        }
+        .footer-col li {
+            margin-bottom: 14px;
+        }
+        .footer-col a {
+            color:#cccccc;
+            text-decoration:none;
+            transition:var(--transition);
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-col a:hover {
+            color:var(--highlight1);
+            padding-left: 6px;
+        }
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .footer-contact-icon {
+            color: var(--highlight2);
+            font-size: 18px;
+            margin-top: 4px;
+        }
+        .copyright {
+            max-width:1320px;
+            margin:50px auto 0;
+            padding-top:30px;
+            border-top:1px solid rgba(255,255,255,0.1);
+            text-align:center;
+            font-size:14px;
+            color:#aaa;
+        }
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Responsive Mobile */
+        @media(max-width:992px) {
+            .desktop-nav {
+                display:none;
+            }
+            .mobile-menu-btn {
+                display:block;
+            }
+            .about-wrap, .contact-wrap {
+                grid-template-columns:1fr;
+            }
+            .service-grid {
+                grid-template-columns:repeat(2,1fr);
+            }
+            .stats-grid {
+                grid-template-columns:repeat(2,1fr);
+            }
+            .team-grid {
+                grid-template-columns:repeat(2,1fr);
+            }
+            .footer-container {
+                grid-template-columns:repeat(2,1fr);
+            }
+            .hero h1 {
+                font-size:42px;
+            }
+            .section-title {
+                font-size: 34px;
+            }
+        }
+        @media(max-width:576px) {
+            .service-grid, .stats-grid, .team-grid {
+                grid-template-columns:1fr;
+            }
+            .footer-container {
+                grid-template-columns:1fr;
+            }
+            section {
+                padding:60px 15px;
+            }
+            .hero h1 {
+                font-size:32px;
+            }
+            .hero p {
+                font-size:18px;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+            .contact-wrap {
+                gap: 30px;
+            }
+            .contact-form {
+                padding: 28px;
+            }
+            .footer {
+                padding: 60px 15px 30px;
+            }
+        }
+        /* Page Hidden Sections Logic */
+        .page-section {
+            display:none;
+            animation: fadeInUp 0.6s ease;
+        }
+        .page-section.active {
+            display:block;
+        }
+    </style>
+    <!-- 引入图标库增强视觉效果 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-text">RUULEMAX <span>Finance</span></div>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#home" data-target="home">Home</a></li>
+                    <li><a href="#about" data-target="about">About Us</a></li>
+                    <li><a href="#services" data-target="services">Services</a></li>
+                    <li><a href="#ourdata" data-target="ourdata">Our Data</a></li>
+                    <li><a href="#team" data-target="team">Our Team</a></li>
+                    <li><a href="#contact" data-target="contact">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
+        </div>
+        <nav class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="#home" data-target="home">Home</a></li>
+                <li><a href="#about" data-target="about">About Us</a></li>
+                <li><a href="#services" data-target="services">Services</a></li>
+                <li><a href="#ourdata" data-target="ourdata">Our Data</a></li>
+                <li><a href="#team" data-target="team">Our Team</a></li>
+                <li><a href="#contact" data-target="contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Page -->
+        <section id="home" class="page-section active">
+            <div class="hero">
+                <h1>RUULEMAX <span>Financial Consulting</span></h1>
+                <p>Professional Global Financial Information Consulting Solutions, Customized Market Analysis, Investment Guidance & Risk Control Services for Individual & Institutional Clients Worldwide. We turn financial data into actionable strategies.</p>
+                <a href="#contact" class="hero-btn" data-target="contact">Get Free Consultation</a>
+            </div>
+        </section>
+
+        <!-- About Us Page -->
+        <section id="about" class="page-section">
+            <div class="about-wrap">
+                <div class="about-img-box">
+                    <img src="https://anasoldi85-lgtm.github.io/1-5/20.jpg" alt="RUULEMAX Company Office">
+                </div>
+                <div class="about-desc">
+                    <p class="section-subtitle">ABOUT RUULEMAX</p>
+                    <h2 class="section-title">Reliable Financial Consulting Firm Based in Liverpool UK</h2>
+                    <p>Founded and registered in Liverpool, England, RUULEMAX is a professional financial information consulting enterprise focusing on global capital market data analysis, financial planning consulting and asset allocation advice. We have gathered a group of senior financial analysts with rich cross-border market experience, each with an average of 15+ years in the financial industry.</p>
+                    <p>Our core mission is to deliver accurate, real-time financial market information and customized consulting strategies to help our clients avoid market risks and capture reasonable investment returns in complex global financial environments. We adhere to the principle of "client-centric" and provide one-stop financial consulting services.</p>
+                    <p>After years of steady development, our service network covers Europe, Southeast Asia and other global mainstream financial markets, winning long-term trust from thousands of individual investors and small and medium-sized financial institutions. Our compliance management system fully meets the regulatory requirements of the UK Financial Conduct Authority (FCA).</p>
+                    
+                    <!-- 新增特色亮点 -->
+                    <div class="about-features">
+                        <div class="about-feature-item">
+                            <div class="about-feature-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div class="about-feature-text">
+                                <h4>Strict Compliance</h4>
+                                <p>Fully compliant with UK financial regulations and international standards</p>
+                            </div>
+                        </div>
+                        <div class="about-feature-item">
+                            <div class="about-feature-icon"><i class="fas fa-globe"></i></div>
+                            <div class="about-feature-text">
+                                <h4>Global Perspective</h4>
+                                <p>Cross-border market analysis covering 20+ countries and regions</p>
+                            </div>
+                        </div>
+                        <div class="about-feature-item">
+                            <div class="about-feature-icon"><i class="fas fa-chart-line"></i></div>
+                            <div class="about-feature-text">
+                                <h4>Data-Driven</h4>
+                                <p>AI-powered market analysis and predictive modeling</p>
+                            </div>
+                        </div>
+                        <div class="about-feature-item">
+                            <div class="about-feature-icon"><i class="fas fa-user-tie"></i></div>
+                            <div class="about-feature-text">
+                                <h4>Personalized Service</h4>
+                                <p>Tailored solutions based on client's unique needs</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Services Page -->
+        <section id="services" class="page-section service-section">
+            <div class="section-header">
+                <p class="section-subtitle">OUR CORE SERVICES</p>
+                <h2 class="section-title">Professional Financial Information Consulting Items</h2>
+                <p class="section-desc">We offer a comprehensive range of financial consulting services tailored to meet the diverse needs of individual and institutional clients, combining global market insights with local expertise.</p>
+            </div>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-card-icon"><i class="fas fa-chart-bar"></i></div>
+                    <h3>Global Market Data Analysis</h3>
+                    <p class="service-card-desc">Real-time tracking of global stock, forex, commodity market trend, regular professional market research report release and data interpretation service.</p>
+                    <p class="service-card-details">• 24/7 market monitoring<br>• Customized report frequency<br>• Multi-dimensional data visualization</p>
+                    <span class="service-tag">Data Support</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-icon"><i class="fas fa-wallet"></i></div>
+                    <h3>Personal Financial Planning</h3>
+                    <p class="service-card-desc">Customized personal asset allocation plan based on customer's income level, risk preference and long-term financial goals.</p>
+                    <p class="service-card-details">• Retirement planning<br>• Tax optimization strategies<br>• Estate planning services</p>
+                    <span class="service-tag">Private Consulting</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-icon"><i class="fas fa-building"></i></div>
+                    <h3>Institutional Financial Advisory</h3>
+                    <p class="service-card-desc">Long-term financial consulting service for small financial institutions including risk assessment, product optimization and market entry planning.</p>
+                    <p class="service-card-details">• Compliance framework design<br>• Product portfolio optimization<br>• Market expansion strategy</p>
+                    <span class="service-tag">Enterprise Service</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <h3>Investment Risk Control Consulting</h3>
+                    <p class="service-card-desc">Comprehensive risk inspection for existing investment portfolios, early warning of potential market risks and optimization adjustment suggestions.</p>
+                    <p class="service-card-details">• Risk assessment modeling<br>• Portfolio stress testing<br>• Real-time risk alerts</p>
+                    <span class="service-tag">Risk Management</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-icon"><i class="fas fa-money-bill-transfer"></i></div>
+                    <h3>Cross-border Finance Guidance</h3>
+                    <p class="service-card-desc">Professional consultation on cross-border fund allocation, overseas asset layout and international financial regulatory policy interpretation.</p>
+                    <p class="service-card-details">• Cross-border payment solutions<br>• Foreign exchange risk management<br>• International tax planning</p>
+                    <span class="service-tag">Global Layout</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Financial Education Training</h3>
+                    <p class="service-card-desc">Systematic financial knowledge training courses for new investors to build scientific investment thinking and market judgment ability.</p>
+                    <p class="service-card-details">• Online/offline workshops<br>• One-on-one coaching<br>• Custom training programs</p>
+                    <span class="service-tag">Training Service</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Data & Performance Page -->
+        <section id="ourdata" class="page-section stats-section">
+            <div class="section-header">
+                <p class="section-subtitle">OUR PERFORMANCE DATA</p>
+                <h2 class="section-title">Operational Data & Service Scale</h2>
+                <p class="section-desc">Our track record speaks for itself - years of consistent performance and client satisfaction across all service areas.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="num">12+</div>
+                    <div class="label">Years Industry Experience</div>
+                    <p class="stat-desc">Established in 2013, with steady growth year over year</p>
+                </div>
+                <div class="stat-item">
+                    <div class="num">4800+</div>
+                    <div class="label">Served Individual Clients</div>
+                    <p class="stat-desc">High-net-worth individuals and retail investors worldwide</p>
+                </div>
+                <div class="stat-item">
+                    <div class="num">156</div>
+                    <div class="label">Cooperated Institutions</div>
+                    <p class="stat-desc">Banks, asset managers, and financial service firms</p>
+                </div>
+                <div class="stat-item">
+                    <div class="num">98.7%</div>
+                    <div class="label">Client Satisfaction Rate</div>
+                    <p class="stat-desc">Based on annual client feedback surveys</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Team Page -->
+        <section id="team" class="page-section">
+            <div class="section-header">
+                <p class="section-subtitle">EXPERT TEAM</p>
+                <h2 class="section-title">Core Senior Financial Consultants</h2>
+                <p class="section-desc">Our team consists of industry experts with extensive experience in global financial markets, bringing diverse perspectives and deep expertise to every client engagement.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-img">
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h4>Mark Harrison</h4>
+                        <span class="team-position">Chief Investment Analyst</span>
+                        <p class="team-bio">20+ years of experience in global capital markets, former senior analyst at a top UK investment bank. Specializes in quantitative analysis and portfolio management.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-img">
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h4>Sophie Wilson</h4>
+                        <span class="team-position">Cross-border Finance Director</span>
+                        <p class="team-bio">Expert in international financial regulations and cross-border capital flows. Previously worked at the European Central Bank, with deep insights into EU financial policies.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-img">
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h4>James Cooper</h4>
+                        <span class="team-position">Risk Control Specialist</span>
+                        <p class="team-bio">15 years of risk management experience in the financial sector. Certified Financial Risk Manager (FRM) with expertise in market risk and credit risk assessment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Us Page -->
+        <section id="contact" class="page-section">
+            <div class="section-header">
+                <p class="section-subtitle">GET IN TOUCH</p>
+                <h2 class="section-title">Contact RUULEMAX UK Office</h2>
+                <p class="section-desc">We're here to answer your questions and provide personalized financial consulting services. Reach out to us today to schedule a consultation.</p>
+            </div>
+            <div class="contact-wrap">
+                <div class="contact-info-block">
+                    <h3>Company Contact Information</h3>
+                    <div class="contact-item">
+                        <strong>Registered Address:</strong>
+                        <p>England Liverpool 91 Church St, L1 6BW, United Kingdom</p>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Phone Number:</strong>
+                        <p>+44 7643221484 (UK) | +44 151 236 8899 (Office Line)</p>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Email Address:</strong>
+                        <p>info@ruulemax.com | consulting@ruulemax.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Business Hours:</strong>
+                        <p>Monday to Friday | 9:00 - 18:00 (UK Local Time)<br>Saturday | 10:00 - 14:00 (By Appointment Only)</p>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Service Scope:</strong>
+                        <p>Global Financial Information Consulting, Online & Offline Appointment Consulting, Customized Financial Planning</p>
+                    </div>
+                    <div class="contact-map">
+                        <img src="https://anasoldi85-lgtm.github.io/1-5/21.jpg" style="width:100%;border-radius:var(--radius-md);">
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <label for="fullName">Your Full Name</label>
+                            <input type="text" id="fullName" placeholder="e.g. John Smith" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="email">Your Email Address</label>
+                            <input type="email" id="email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="phone">Your Contact Phone</label>
+                            <input type="tel" id="phone" placeholder="+44 7XXXXXXXXX">
+                        </div>
+                        <div class="form-row">
+                            <label for="serviceType">Service Interest (Optional)</label>
+                            <select id="serviceType" class="form-control" style="width:100%;padding:14px 18px;border:1px solid #e0e0e0;border-radius:var(--radius-sm);font-size:15px;">
+                                <option value="">Select a service</option>
+                                <option value="market-analysis">Market Data Analysis</option>
+                                <option value="personal-finance">Personal Financial Planning</option>
+                                <option value="risk-control">Risk Control Consulting</option>
+                                <option value="cross-border">Cross-border Finance</option>
+                                <option value="other">Other Services</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <label for="message">Your Message & Consulting Demand</label>
+                            <textarea id="message" placeholder="Please describe your financial consulting needs in detail..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Submit Your Inquiry</button>
+                        <div class="success-alert" id="successMsg">Your message has been submitted successfully! Our consultant will contact you within 2 working days.</div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Area -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>RUULEMAX</h4>
+                <p>Professional UK-based financial information consulting company committed to reliable financial market analysis and personalized investment consulting services. We combine global market insights with local expertise to deliver exceptional value to our clients.</p>
+                <p>Registered in England and Wales | Company Number: 12345678<br>Authorized and regulated by the Financial Conduct Authority (FCA)</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home" data-target="home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#about" data-target="about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="#services" data-target="services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                    <li><a href="#ourdata" data-target="ourdata"><i class="fas fa-chevron-right"></i> Our Data</a></li>
+                    <li><a href="#team" data-target="team"><i class="fas fa-chevron-right"></i> Our Team</a></li>
+                    <li><a href="#contact" data-target="contact"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Our Services</h4>
+                <ul>
+                    <li><a href="#services" data-target="services"><i class="fas fa-chevron-right"></i> Market Data Analysis</a></li>
+                    <li><a href="#services" data-target="services"><i class="fas fa-chevron-right"></i> Personal Finance Plan</a></li>
+                    <li><a href="#services" data-target="services"><i class="fas fa-chevron-right"></i> Risk Control Consulting</a></li>
+                    <li><a href="#services" data-target="services"><i class="fas fa-chevron-right"></i> Cross-border Finance</a></li>
+                    <li><a href="#services" data-target="services"><i class="fas fa-chevron-right"></i> Institutional Advisory</a></li>
+                    <li><a href="#services" data-target="services"><i class="fas fa-chevron-right"></i> Financial Education</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <div class="footer-contact-item">
+                    <div class="footer-contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>England Liverpool 91 Church St, L1 6BW, UK</div>
+                </div>
+                <div class="footer-contact-item">
+                    <div class="footer-contact-icon"><i class="fas fa-phone"></i></div>
+                    <div>+44 7643221484 | +44 151 236 8899</div>
+                </div>
+                <div class="footer-contact-item">
+                    <div class="footer-contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div>info@ruulemax.com</div>
+                </div>
+                <div class="footer-contact-item">
+                    <div class="footer-contact-icon"><i class="fas fa-clock"></i></div>
+                    <div>Mon-Fri: 9:00 - 18:00 (UK Time)</div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2025 RUULEMAX All Rights Reserved | UK Registered Financial Consulting Enterprise | Privacy Policy | Terms of Service
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        mobileBtn.addEventListener('click', ()=>{
+            mobileNav.classList.toggle('active');
+            // 切换菜单图标
+            const icon = mobileBtn.querySelector('i');
+            if(mobileNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        })
+
+        // Page Switch Navigation Logic
+        const navLinks = document.querySelectorAll('[data-target]');
+        const allSections = document.querySelectorAll('.page-section');
+        navLinks.forEach(item=>{
+            item.addEventListener('click',(e)=>{
+                e.preventDefault();
+                let targetId = item.getAttribute('data-target');
+                // Hide all pages
+                allSections.forEach(sec=>sec.classList.remove('active'));
+                // Show target page
+                document.getElementById(targetId).classList.add('active');
+                // Close mobile menu after click
+                mobileNav.classList.remove('active');
+                const icon = mobileBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                // Scroll top with smooth animation
+                window.scrollTo({top:0,behavior:'smooth'});
+            })
+        })
+
+        // Contact Form Always Success Submit
+        const contactForm = document.getElementById('contactForm');
+        const successAlert = document.getElementById('successMsg');
+        contactForm.addEventListener('submit',(e)=>{
+            e.preventDefault();
+            successAlert.style.display = 'block';
+            contactForm.reset();
+            setTimeout(()=>{
+                successAlert.style.display = 'none';
+            },5000)
+        })
+
+        // 平滑滚动增强
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
